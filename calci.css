@@ -1,0 +1,48 @@
+/* ########### Normal Display ############ */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url("pattern-34.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+header.text-warning {
+    font-family: 'Oswald',sans-serif;
+    font-size: 50px;
+}
+
+.col {
+    padding: 0;
+}
+
+div.border {
+    padding: 8px;
+    border-radius: 8px;
+}
+
+input.calscreen {
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: right;
+    border: none;
+    font-size: 30px;
+    width: 100%
+}
+
+input.chars {
+    margin: 7.2px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    width: 120px;
+    height: 60px;
+    text-align: center;
+    font-size: 30px;
+}
+
+input.zero {
+    width: 260px;
+}
