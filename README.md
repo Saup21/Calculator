@@ -9,5 +9,9 @@ The simple calculator will be able able to add, subtract, multiply, divide integ
 ---
 Todo list-  
 - [x] Designing
+<<<<<<< HEAD
 - [x] Mobile responsive
+=======
+- [x] Mobile responsive 
+>>>>>>> 777605974b8111f65f2c56ace2fd24b6f997fbca
 - [x] JS 
