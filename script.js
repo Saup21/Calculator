@@ -1,6 +1,6 @@
-s="";
-$(document).ready(function() {
+let s="";
 
+$(document).ready(function() {
 
     $("#ac").click(function() {
         $("#screen").val("");
@@ -17,20 +17,60 @@ $(document).ready(function() {
     });
     $("#eq").click(function() {
         s=$("#screen").val();
-        let s1=s.replace("%", "*0.01*");
-        let ans = eval(s1);
-        $("#screen").val(ans);
-        s = ans;
+        if(s=="") {
+            $("#screen").val("");
+            s="";
+        }
+        else {
+            let s1,s2;
+            if(s.charAt(s.length-1)=="%"){
+                s1=s.replace("%", "*0.01");
+            }
+            else {
+                s1=s.replace("%", "*0.01*");
+            }
+            s2=s1.replace("undefined", "");
+            let ans = eval(s2);
+            $("#screen").val(ans);
+            s = ans;
+        }
+        console.log(s);
     });
 });
 
 $(document).keypress(function(e) {
+    $("#screen").focus();
     if(e.key=="Enter") {
         s=$("#screen").val();
-        let s1=s.replace("%", "*0.01*");
-        let ans = eval(s1);
+        let s1,s2;
+        if(s.charAt(s.length-1)=="%"){
+            s1=s.replace("%", "*0.01");
+        }
+        else {
+            s1=s.replace("%", "*0.01*");
+        }
+        s2=s1.replace("undefined", "");
+        let ans = eval(s2);
         $("#screen").val(ans);
         s = ans;
+    }
+    console.log(s);
+    // if(e.key=="Backspace") {
+    //     s=$("#screen").val();
+    //     $("#screen").val(s.substring(0, s.length-1));
+    //     s=$("#screen").val();
+    // }
+    // console.log(e.key);
+});
+
+$(document).keydown(function(e) {
+    if (e.keyCode == 8) e.preventDefault();
+});
+$(document).keyup(function(e) {
+    if(e.keyCode == 8) {
+        s=$("#screen").val();
+        $("#screen").val(s.substring(0, s.length-1));
+        s=$("#screen").val();
     }
 });
 
@@ -39,7 +79,7 @@ function isNumberKey(evt){
     if (charCode == 37 || charCode == 42 || charCode == 43 || charCode == 45 || charCode == 46 || charCode == 47)
     {
         s+=evt.key;
-        $("#screen").val(s);
+        // $("#screen").val(s);
         return true;
     }
     else if (charCode > 31 && (charCode < 48 || charCode > 57))
@@ -47,7 +87,7 @@ function isNumberKey(evt){
     else
     {
         s+=evt.key;
-        $("#screen").val(s);
+        // $("#screen").val(s);
         return true;
     }
 }
