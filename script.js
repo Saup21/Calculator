@@ -34,7 +34,6 @@ $(document).ready(function() {
             $("#screen").val(ans);
             s = ans;
         }
-        console.log(s);
     });
 });
 
@@ -42,19 +41,24 @@ $(document).keypress(function(e) {
     $("#screen").focus();
     if(e.key=="Enter") {
         s=$("#screen").val();
-        let s1,s2;
-        if(s.charAt(s.length-1)=="%"){
-            s1=s.replace("%", "*0.01");
+        if(s=="") {
+            $("#screen").val("");
+            s="";
         }
         else {
-            s1=s.replace("%", "*0.01*");
+            let s1,s2;
+            if(s.charAt(s.length-1)=="%"){
+                s1=s.replace("%", "*0.01");
+            }
+            else {
+                s1=s.replace("%", "*0.01*");
+            }
+            s2=s1.replace("undefined", "");
+            let ans = eval(s2);
+            $("#screen").val(ans);
+            s = ans;
         }
-        s2=s1.replace("undefined", "");
-        let ans = eval(s2);
-        $("#screen").val(ans);
-        s = ans;
     }
-    console.log(s);
     // if(e.key=="Backspace") {
     //     s=$("#screen").val();
     //     $("#screen").val(s.substring(0, s.length-1));
