@@ -1,7 +1,11 @@
-s="";
+let s="";
+
 $(document).ready(function() {
 
 
+  if($(window).width()<700)
+  $("#screen").attr("readonly",true)
+// $("#screen").focus();
     $("#ac").click(function() {
         $("#screen").val("");
         s="";
@@ -17,50 +21,76 @@ $(document).ready(function() {
     });
     $("#eq").click(function() {
         s=$("#screen").val();
-        let s1=s.replace("%", "*0.01*");
-        let s2=s1.replace("undefined","");
-        let ans = eval(s2);
-        if(ans.search("undefined")===-1)
-        {
-          $("#screen").val(ans);
-        s = ans;
-      }
+        if(s=="") {
+            $("#screen").val("");
+            s="";
+        }
+        else {
+            let s1,s2;
+            if(s.charAt(s.length-1)=="%"){
+                s1=s.replace("%", "*0.01");
+            }
+            else {
+                s1=s.replace("%", "*0.01*");
+            }
+            s2=s1.replace("undefined", "");
+            let ans = eval(s2);
+            $("#screen").val(ans);
+            s = ans;
+        }
     });
 });
-$(document).keydown(function(e) { if (e.keyCode == 8) e.preventDefault(); });
- $(document).keyup(function(e){
-   if(e.keyCode == 8)
-   {
-     s=$("#screen").val();
-     $("#screen").val(s.substring(0, s.length-1));
-     s=$("#screen").val();
-   }
+if($(window).width()>=700)
+{
+  $(document).keypress(function(e) {
+  // $("#screen").focus();
+      if(e.key=="Enter") {
+          s=$("#screen").val();
+          if(s=="") {
+              $("#screen").val("");
+              s="";
+          }
+          else {
+              let s1,s2;
+              if(s.charAt(s.length-1)=="%"){
+                  s1=s.replace("%", "*0.01");
+              }
+              else {
+                  s1=s.replace("%", "*0.01*");
+              }
+              s2=s1.replace("undefined", "");
+              let ans = eval(s2);
+              $("#screen").val(ans);
+              s = ans;
+          }
+      }
+      // if(e.key=="Backspace") {
+      //     s=$("#screen").val();
+      //     $("#screen").val(s.substring(0, s.length-1));
+      //     s=$("#screen").val();
+      // }
+      // console.log(e.key);
+  });
 
- });
+}
 
-
-$(document).keypress(function(e) {
-
-    if(isNumberKey(e))
-    $("#screen").focus();
-    if(e.key=="Enter") {
-        s=$("#screen").val();
-        let s1=s.replace("%", "*0.01*");
-        let s2=s1.replace("undefined","");
-        let ans = eval(s2);
-                  $("#screen").val(ans);
-        s = ans;
-
-    }
-
+$(document).keydown(function(e) {
+    if (e.keyCode == 8) e.preventDefault();
 });
-
-function isNumberKey(evt){
+$(document).keyup(function(e) {
+    if(e.keyCode == 8) {
+        s=$("#screen").val();
+        $("#screen").val(s.substring(0, s.length-1));
+        s=$("#screen").val();
+    }
+});
+if($(window).width()>=700)
+{
+  function isNumberKey(evt){
     var charCode = (evt.which) ? evt.which : evt.keyCode;
     if (charCode == 37 || charCode == 42 || charCode == 43 || charCode == 45 || charCode == 46 || charCode == 47)
     {
         s+=evt.key;
-        // console.log(s);
         // $("#screen").val(s);
         return true;
     }
@@ -69,8 +99,12 @@ function isNumberKey(evt){
     else
     {
         s+=evt.key;
-        // console.log(s);
         // $("#screen").val(s);
         return true;
     }
+}
+}
+else
+function isNumberKey(evt){
+  return false;
 }

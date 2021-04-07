@@ -60,9 +60,9 @@ input.zero {
         background-color: rgba(0, 0, 0, 0.7);
         border: none;
         width: 98%;
-        height: 35px;
+        height: 45px;
         text-align: center;
-        font-size: 10px;
+        font-size: 20px;
     }
 
     input.zero {
