@@ -10,4 +10,4 @@ The simple calculator will be able able to add, subtract, multiply, divide integ
 Todo list-  
 - [x] Designing
 - [x] Mobile responsive 
-- [ ] JS 
+- [x] JS 
