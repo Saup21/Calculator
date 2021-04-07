@@ -1,6 +1,12 @@
 let s="";
 
+
+
 $(document).ready(function() {
+
+    if($(window).width() < 700) {
+        $("#screen").prop("readonly", true);
+    }
 
     $("#ac").click(function() {
         $("#screen").val("");
@@ -37,8 +43,10 @@ $(document).ready(function() {
     });
 });
 
+if($(window).width() >= 700) {
 $(document).keypress(function(e) {
-    $("#screen").focus();
+    //if(isNumberKey(e))
+    // $("#screen").focus();
     if(e.key=="Enter") {
         s=$("#screen").val();
         if(s=="") {
@@ -66,7 +74,7 @@ $(document).keypress(function(e) {
     // }
     // console.log(e.key);
 });
-
+}
 $(document).keydown(function(e) {
     if (e.keyCode == 8) e.preventDefault();
 });
