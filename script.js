@@ -28,7 +28,7 @@ $(document).ready(function() {
             s="";
         }
         else {
-            let s1,s2;
+            let s1,s2,ans;
             if(s.charAt(s.length-1)=="%"){
                 s1=s.replace("%", "*0.01");
             }
@@ -36,9 +36,40 @@ $(document).ready(function() {
                 s1=s.replace("%", "*0.01*");
             }
             s2=s1.replace("undefined", "");
-            let ans = eval(s2);
-            $("#screen").val(ans);
-            s = ans;
+            try {
+                let flag = 0;
+                for(let i=0;i<s2.length;i++) {
+                    if(i!=s.length-1&&s[i]=='/'&&s[i+1]=='/'||i!=0&&s[i]=='/'&&s[i-1]=='/') {
+                        flag = 1;
+                    }
+                    else if (i!=s.length-1&&s[i]=='*'&&s[i+1]=='*'||i!=0&&s[i]=='*'&&s[i-1]=='*') {
+                        flag=1;
+                    }
+                }
+                if(flag == 1) {
+                    $("#screen").val('Invalid regular expression');
+                    s='';
+                    setTimeout(function(){alert('Please hit "All Clear (AC)"');},200);
+                }
+                else {
+                    ans = eval(s2);
+                    $("#screen").val(ans);
+                    s = ans;
+                }
+            }
+            catch(err) {
+                $("#screen").val('Invalid regular expression');
+                s='';
+                setTimeout(function(){alert('Please hit "All Clear (AC)"');},200);
+            }
+            // if(ans==s2)
+            // {
+            //     $("#screen").val('Invalid regular expression');
+            // }
+            // else
+            // {
+            //     $("#screen").val(ans);
+            // }
         }
     });
 });

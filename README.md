@@ -1,13 +1,30 @@
-# **Simple Calculator**
-The simple calculator will be able able to add, subtract, multiply, divide integers as well as decimal numbers. Moreover it will also have percentage operator, all clear and delete function.  
+# Calculator
+
+## Description
+It is a Simple Calculator made using Javascript and jQuery
+
+#### Steps:
 ---
-#### The calculator is made using
-1. HTML
-1. CSS
-1. Bootstrap
-1. jQuery
+
+- Download or clone the repository
+```
+git clone https://github.com/Saup21/Calculator.git
+```
+- Go to the directory
+- Run the index.html file
+- Calculate
+
+<br/>
+
+#### Calculator image:
 ---
-Todo list-  
-- [x] Designing
-- [x] Mobile responsive
-- [x] JS
+
+![Calculator image](images\calculator.png)
+
+#### Tech stack:
+---
+- HTML5
+- CSS3
+- Bootstrap
+- Javascript
+- jQuery
