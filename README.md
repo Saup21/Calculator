@@ -19,7 +19,7 @@ git clone https://github.com/Saup21/Calculator.git
 #### Calculator image:
 ---
 
-![Calculator image](images\calculator.png)
+![Calculator image](images/calculator.png)
 
 #### Tech stack:
 ---
